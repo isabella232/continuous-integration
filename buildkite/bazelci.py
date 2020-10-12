@@ -2167,7 +2167,7 @@ def print_project_pipeline(
     pipeline_steps = []
     # If this job is not triggered from a Github pull request, we show the link to its Gerrit review
     text = "The transformed code used in this pipeline can be found under https://bazel-review.googlesource.com/q/%s" % os.getenv("BUILDKITE_COMMIT")
-    commands = ["buildkite-agent annotate --style=info ".format(text)]
+    commands = ["buildkite-agent annotate --style=info '{}'".format(text)]
     pipeline_steps.append(
         create_step(
             label=":pipeline: Print information about Gerrit Review Link",
