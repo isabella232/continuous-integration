@@ -2318,7 +2318,7 @@ def show_gerrit_review_link(git_repository, pipeline_steps):
 
 
 def is_git_on_borg_repo(git_repository):
-    if git_repository is not None and git_repository.contains("googlesource.com"):
+    if git_repository is not None and "googlesource.com" in git_repository:
         return True
     return False
 
