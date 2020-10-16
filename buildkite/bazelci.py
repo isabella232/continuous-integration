@@ -2166,7 +2166,9 @@ def print_project_pipeline(
 
     pipeline_steps = []
     # If the repository is hosted on Git-on-borg, we show the link to the commit Gerrit review
-    show_gerrit_review_link(git_repository, pipeline_steps)
+    buildkite_repo = os.getenv("BUILDKITE_REPO")
+    if is_git_on_borg_repo(buildkite_repo):
+        show_gerrit_review_link(buildkite_repo, pipeline_steps)
 
     task_configs = filter_tasks_that_should_be_skipped(task_configs, pipeline_steps)
 
